@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MinimumVisualStudioVersion>17.0</MinimumVisualStudioVersion>
@@ -50,6 +50,9 @@
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Oceanic.VS2026.xml">
+      <Visible>False</Visible>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="17.0.32112.339" ExcludeAssets="runtime" />
@@ -63,6 +66,22 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\VSSDK\Microsoft.VsSDK.targets" Condition="'$(VSToolsPath)' != ''" />
+  <PropertyGroup>
+    <CompileColorsBuildCommand>"$(VsInstallRoot)\VSSDK\VisualStudioIntegration\Tools\Bin\VsixColorCompiler.exe"</CompileColorsBuildCommand>
+  </PropertyGroup>
+  <Target Name="CompileOceanic2026ThemeColors" BeforeTargets="BeforeBuild">
+    <MakeDir Directories="$(OutputPath)Themes" />
+    <Exec Command="$(CompileColorsBuildCommand) &quot;$(MSBuildProjectDirectory)\Oceanic.VS2026.xml&quot; &quot;$(MSBuildProjectDirectory)\$(OutputPath)Themes\Oceanic.VS2026.pkgdef&quot;" />
+  </Target>
+  <Target Name="IncludeOceanic2026ThemeColors" DependsOnTargets="CompileOceanic2026ThemeColors" BeforeTargets="BeforeBuild">
+    <ItemGroup>
+      <Content Include="$(OutputPath)Themes\Oceanic.VS2026.pkgdef">
+        <IncludeInVSIX>true</IncludeInVSIX>
+        <Visible>False</Visible>
+        <VSIXSubPath>Themes</VSIXSubPath>
+      </Content>
+    </ItemGroup>
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
