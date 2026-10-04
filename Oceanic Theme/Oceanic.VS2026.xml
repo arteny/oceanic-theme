@@ -28,6 +28,12 @@
       <Color Name="EnvironmentBackground">
         <Background Type="CT_RAW" Source="FF1B2B34" />
       </Color>
+      <Color Name="EnvironmentHeader">
+        <Background Type="CT_RAW" Source="FF1B2B34" />
+      </Color>
+      <Color Name="EnvironmentHeaderInactive">
+        <Background Type="CT_RAW" Source="FF16242C" />
+      </Color>
       <Color Name="EnvironmentBorder">
         <Background Type="CT_RAW" Source="FF5FB3B3" />
       </Color>
@@ -36,6 +42,12 @@
       </Color>
       <Color Name="EnvironmentLogo">
         <Background Type="CT_RAW" Source="FF5FB3B3" />
+      </Color>
+      <Color Name="EnvironmentTab">
+        <Background Type="CT_RAW" Source="FF1B2B34" />
+      </Color>
+      <Color Name="EnvironmentTabInactive">
+        <Background Type="CT_RAW" Source="FF16242C" />
       </Color>
       <Color Name="EnvironmentLayeredBackground">
         <Background Type="CT_RAW" Source="4D0D151A" />
